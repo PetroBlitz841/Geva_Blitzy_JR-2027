@@ -18,28 +18,28 @@ wheel_right = Motor(Port.B)
 
 chassis = DriveBase(wheel_left, wheel_right, 62.4, 97.5)
 
-# # reflection color
-# WHITE = Color(h=0, s=0, v=100)
-# RED = Color(h=352, s=92, v=75)
-# BLUE = Color(h=218, s=94, v=72)
-# GREEN = Color(h=155, s=78, v=48)
-# YELLOW = Color(h=40, s=70, v=100)
-# BLACK = Color(h=200, s=20, v=19)
-# ORANGE = Color(h=7, s=86, v=99)
-# NO_COLOR = Color(h=180, s=32, v=7)
+# reflection color
+WHITE = Color(h=0, s=0, v=100)
+RED = Color(h=352, s=92, v=75)
+BLUE = Color(h=218, s=94, v=72)
+GREEN = Color(h=155, s=78, v=48)
+YELLOW = Color(h=40, s=70, v=100)
+BLACK = Color(h=200, s=20, v=19)
+ORANGE = Color(h=7, s=86, v=99)
+NO_COLOR = Color(h=180, s=32, v=7)
 
-# arm_color_sensor.detectable_colors(
-#     [
-#         WHITE,
-#         RED,
-#         BLUE,
-#         GREEN,
-#         YELLOW,
-#         BLACK,
-#         ORANGE,
-#         NO_COLOR
-#     ]
-# )
+arm_color_sensor.detectable_colors(
+    [
+        WHITE,
+        RED,
+        BLUE,
+        GREEN,
+        YELLOW,
+        BLACK,
+        ORANGE,
+        NO_COLOR
+    ]
+)
 
 def drive_settings(straight_speed=300, straight_acceleration=300, turn_rate=300, turn_acceleration=400):
     """resets to the default speed, acceleration and turn rate"""

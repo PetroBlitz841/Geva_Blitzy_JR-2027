@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FLL: Run Active File on Hub",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${command:python.interpreterPath}",
+      "program": "${workspaceFolder}/pybrickslaunch.py",
+      "console": "integratedTerminal",
+      "env": {
+        "TARGET": "${file}"
+      }
+    }
+  ]
+}
