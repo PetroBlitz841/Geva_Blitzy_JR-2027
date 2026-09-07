@@ -74,29 +74,36 @@ def drive_untill_black(speed=100, turn_rate=0):
         print(floor_color_sensor.reflection())
     chassis.stop()
 
+def hsv_check(sensor):
+    while True:
+        hsv = sensor.hsv()
+        print(hsv)
 
-while True:
-    reset()
-    drive_settings(straight_speed=1000)
-    chassis.straight(300, then=Stop.NONE)
-    chassis.curve(radius=300, angle=180)
-    chassis.curve(radius=150, angle=-140)
-    chassis.straight(200, then=Stop.NONE)
-    chassis.curve(radius=250, angle=230)
+hsv_check(arm_color_sensor)
 
-    chassis.straight(100, then=Stop.NONE)
-    chassis.curve(radius=100, angle=30, then=Stop.NONE)
 
-    chassis.straight(100 ,then=Stop.NONE)
+# while True:
+#     reset()
+#     drive_settings(straight_speed=1000)
+#     chassis.straight(300, then=Stop.NONE)
+#     chassis.curve(radius=300, angle=180)
+#     chassis.curve(radius=150, angle=-140)
+#     chassis.straight(200, then=Stop.NONE)
+#     chassis.curve(radius=250, angle=230)
 
-    chassis.curve(radius=100, angle=-30, then=Stop.NONE)
-    chassis.straight(50 ,then=Stop.NONE)
+#     chassis.straight(100, then=Stop.NONE)
+#     chassis.curve(radius=100, angle=30, then=Stop.NONE)
 
-    chassis.curve(radius=100, angle=-30)
-    drive_untill_black()
+#     chassis.straight(100 ,then=Stop.NONE)
 
-    chassis.curve(radius=100, angle=30, then=Stop.NONE)
+#     chassis.curve(radius=100, angle=-30, then=Stop.NONE)
+#     chassis.straight(50 ,then=Stop.NONE)
 
-    chassis.straight(330, then=Stop.NONE)
-    chassis.curve(radius=300, angle=90)
-    chassis.straight(-650)
+#     chassis.curve(radius=100, angle=-30)
+#     drive_untill_black()
+
+#     chassis.curve(radius=100, angle=30, then=Stop.NONE)
+
+#     chassis.straight(330, then=Stop.NONE)
+#     chassis.curve(radius=300, angle=90)
+#     chassis.straight(-650)
