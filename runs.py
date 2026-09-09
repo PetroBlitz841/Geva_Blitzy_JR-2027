@@ -21,23 +21,23 @@ chassis = DriveBase(wheel_left, wheel_right, 62.4, 97.5)
 
 # reflection color
 WHITE = Color(h=10, s=0, v=100)
-# RED = Color(h=352, s=92, v=75)
-# BLUE = Color(h=218, s=94, v=72)
-# GREEN = Color(h=155, s=78, v=48)
-# YELLOW = Color(h=40, s=70, v=100)
-BLACK = Color(h=210, s=57, v=8)
-# ORANGE = Color(h=7, s=86, v=99)
+RED = Color(h=354, s=89, v=59)
+BLUE = Color(h=216, s=92, v=55)
+GREEN = Color(h=156, s=79, v=38)
+YELLOW = Color(h=40, s=70, v=94)
+BLACK = Color(h=210, s=26, v=14)
+MAGENTA = Color(h=338, s=83, v=31)
 NO_COLOR = Color(h=200, s=78, v=5)
 
 arm_color_sensor.detectable_colors(
     [
         WHITE,
-        # RED,
-        # BLUE,
-        # GREEN,
-        # YELLOW,
+        RED,
+        BLUE,
+        GREEN,
+        YELLOW,
         BLACK,
-        # ORANGE,
+        MAGENTA,
         NO_COLOR
     ]
 )
@@ -113,8 +113,8 @@ def white_run():
     
 
 def run_none():
-    # hsv_check(arm_color_sensor)
-    wheels_cleaning()
+    hsv_check(arm_color_sensor)
+    # wheels_cleaning()
 
 runs = [
     (BLACK, black_run, 1, "black run"),
