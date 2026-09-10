@@ -11,8 +11,8 @@ hub = PrimeHub(top_side=-Axis.X, front_side=Axis.Z)
 floor_color_sensor = ColorSensor(Port.D)
 arm_color_sensor = ColorSensor(Port.C)
 # Arms
-arm_right = Motor(Port.A)
-arm_left = Motor(Port.E)
+arm_right = Motor(Port.E)
+arm_left = Motor(Port.A)
 # Wheels
 wheel_left = Motor(Port.F, Direction.COUNTERCLOCKWISE)
 wheel_right = Motor(Port.B)
@@ -42,7 +42,7 @@ arm_color_sensor.detectable_colors(
     ]
 )
 
-def drive_settings(straight_speed=300, straight_acceleration=300, turn_rate=300, turn_acceleration=400):
+def drive_settings(straight_speed=500, straight_acceleration=300, turn_rate=300, turn_acceleration=100):
     """resets to the default speed, acceleration and turn rate"""
     chassis.settings(
         straight_speed=straight_speed,
@@ -52,6 +52,7 @@ def drive_settings(straight_speed=300, straight_acceleration=300, turn_rate=300,
     )
 
 def reset(gyro=0):
+    """resets the gyro and drive settings to default values"""
     chassis.use_gyro(False)
     hub.imu.reset_heading(gyro)
     drive_settings()
@@ -82,7 +83,15 @@ def hsv_check(sensor):
 
 
 def black_run():
-    chassis.straight(500)
+    reset(gyro=90)
+    arm_right.run_time(speed=500, time=1000, wait=False) # Reset the drone arm
+
+    chassis.use_gyro(False) # Shut down the gyro to not use PID for the wall following
+    chassis.curve(radius=1000, angle=40) # Push the drone while sticking to the wall
+    chassis.use_gyro(True) # Return the gyro for the rest of the run
+    arm_right.run_time(speed=-300, time=1000, wait=False) # Push the drone in
+    chassis.straight(200)
+    
 
 def white_run():
     while True:
