@@ -84,15 +84,17 @@ def hsv_check(sensor):
 
 def black_run():
     reset(gyro=90)
-    arm_right.run_time(speed=500, time=1000, wait=False) # Reset the drone arm
+    arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the drone arm
 
     chassis.use_gyro(False) # Shut down the gyro to not use PID for the wall following
-    chassis.curve(radius=1000, angle=40) # Push the drone while sticking to the wall
+    chassis.curve(radius=700, angle=60) # Push the drone while sticking to the wall
     chassis.use_gyro(True) # Return the gyro for the rest of the run
-    arm_right.run_time(speed=-300, time=1000, wait=False) # Push the drone in
-    chassis.straight(200)
-    
+    arm_left.run_time(speed=50, time=1500) # Push the drone in
+    # arm_left.run_time(speed=-50, time=3000, wait=False)
+    # drive_settings(straight_speed=100)
+    # chassis.straight(-50)
 
+    
 def white_run():
     while True:
         reset()
