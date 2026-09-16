@@ -87,12 +87,14 @@ def black_run():
     arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the drone arm
 
     chassis.use_gyro(False) # Shut down the gyro to not use PID for the wall following
-    chassis.curve(radius=700, angle=60) # Push the drone while sticking to the wall
+    chassis.curve(radius=725, angle=60) # Push the drone while sticking to the wall
     chassis.use_gyro(True) # Return the gyro for the rest of the run
-    arm_left.run_time(speed=50, time=1500) # Push the drone in
+    arm_left.run_time(speed=1000, time=1200) # Push the drone in
+    arm_left.run_time(speed=-1000, time=1200) # return motor
     # arm_left.run_time(speed=-50, time=3000, wait=False)
     # drive_settings(straight_speed=100)
     # chassis.straight(-50)
+
 
     
 def white_run():
@@ -147,3 +149,4 @@ while not finished:
             print("BAT_percent:", f"{check_battery_percent()}%")
             run_task(run[1]())  # Run the run funciton
             break
+
