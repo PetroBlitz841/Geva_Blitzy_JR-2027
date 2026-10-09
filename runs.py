@@ -93,37 +93,27 @@ def turn_to(angle):
 def black_run():
     reset(gyro=90)
     arm_left.run_time(speed=-900, time=1000,wait=False) # Reset the drone arm
-    arm_right.run_time(speed=900, time=1000) # Reset the drone arm
-    arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the drone arm 
+    arm_right.run_time(speed=900, time=1000) # Reset the drone arm2
+    arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the drone arm 3
     arm_right.run_time(speed=500, time=1000, wait=False)
     chassis.use_gyro(True) # Shut down the gyro to not use PID for the wall following
-    chassis.straight(770)
-    #chassis.curve(radius=800, angle=60) # Push the drone while sticking to the wall
-    chassis.turn(-60)
+    chassis.straight(770) #pushing the drone
+    chassis.turn(-60) #puttind the red thingy in the other thingy
     wheel_right.run_angle(speed=800, rotation_angle=215)
-    wheel_right.run_angle(speed=800, rotation_angle=-100) # Turn the right wheel to push the drone
-    turn_to(90)
-    chassis.straight(-780)
-    turn_to(45)
-    arm_left.run_time(speed=700, time=1000,wait=False) # Reset the drone arm    
-    arm_right.run_time(speed=-700, time=1000,wait=False)
-    chassis.straight(550)
-    chassis.straight(-15)
-    arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # Reset the drone arm
-    arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False)
-    wait(1000)
-    chassis.settings(400)
-    chassis.straight(-500)
-
-    # chassis.use_gyro(True) # Return the gyro for the rest of the run
-    # arm_left.run_time(speed=825, time=3000, wait=False) # Push the drone in
-    # chassis.settings(straight_speed=75)
-    # chassis.straight(-60) # Back up to the wall
-    # wait(2000)
-    #arm_left.run_time(speed=-1000, time=1200) # return motor
-    # arm_left.run_time(speed=-50, time=3000, wait=False)
-    # drive_settings(straight_speed=100)
-    # chassis.straight(-50)
+    wheel_right.run_angle(speed=800, rotation_angle=-100) 
+    turn_to(90) #turning back to the starter angle
+    chassis.straight(-780) #going to base
+    turn_to(45) #turning to the green tree
+    arm_left.run_time(speed=700, time=1000,wait=False) # putting down the cage
+    arm_right.run_time(speed=-700, time=1000,wait=False) #putting down the cage2
+    chassis.straight(550) #going to the green tree
+    chassis.straight(-15) 
+    arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # picking up the cage
+    arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False) #picking up the cage2
+    wait(1000) #literally wait
+    chassis.settings(400) #driving a bit slower
+    chassis.straight(-500) #going back to the base
+    
 
 
     
