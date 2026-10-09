@@ -92,24 +92,24 @@ def turn_to(angle):
 
 def black_run():
     reset(gyro=90)
-    arm_left.run_time(speed=-900, time=1000,wait=False) # Reset the drone arm
-    arm_right.run_time(speed=900, time=1000) # Reset the drone arm2
-    arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the drone arm 3
+    arm_left.run_time(speed=-900, time=1000,wait=False) # Reset the  arm
+    arm_right.run_time(speed=900, time=1000) # Reset the arm
+    arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the  arm 3
     arm_right.run_time(speed=500, time=1000, wait=False)
-    chassis.use_gyro(True) # Shut down the gyro to not use PID for the wall following
+    chassis.use_gyro(True) # use PID for the wall following
     chassis.straight(770) #pushing the drone
     chassis.turn(-60) #puttind the red thingy in the other thingy
     wheel_right.run_angle(speed=800, rotation_angle=215)
     wheel_right.run_angle(speed=800, rotation_angle=-100) 
     turn_to(90) #turning back to the starter angle
     chassis.straight(-780) #going to base
-    turn_to(45) #turning to the green tree
+    turn_to(45) #turning to the m02 
     arm_left.run_time(speed=700, time=1000,wait=False) # putting down the cage
     arm_right.run_time(speed=-700, time=1000,wait=False) #putting down the cage2
-    chassis.straight(550) #going to the green tree
+    chassis.straight(550) #going to m02
     chassis.straight(-15) 
-    arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # picking up the cage
-    arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False) #picking up the cage2
+    arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # picking up the cage and seed
+    arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False) #picking up the cage2 and seed
     wait(1000) #literally wait
     chassis.settings(400) #driving a bit slower
     chassis.straight(-500) #going back to the base
