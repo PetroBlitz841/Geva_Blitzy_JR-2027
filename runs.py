@@ -81,25 +81,39 @@ def hsv_check(sensor):
         hsv = sensor.hsv()
         print(hsv)
 
+def turn_to(angle):
+    start_angle = (hub.imu.heading() + 360) % 360
+    deg_to_turn = (angle - start_angle) % 360
+    if deg_to_turn >= 180:
+        chassis.turn(deg_to_turn - 360)
+    else:
+        chassis.turn(deg_to_turn)
+
 
 def black_run():
     reset(gyro=90)
-    arm_left.run_time(speed=-700, time=500) # Reset the drone arm
+    arm_left.run_time(speed=-900, time=1000,wait=False) # Reset the drone arm
+    arm_right.run_time(speed=900, time=1000) # Reset the drone arm
     arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the drone arm 
+    arm_right.run_time(speed=500, time=1000, wait=False)
     chassis.use_gyro(True) # Shut down the gyro to not use PID for the wall following
-    chassis.straight(750)
+    chassis.straight(770)
     #chassis.curve(radius=800, angle=60) # Push the drone while sticking to the wall
-    chassis.turn(-50)
+    chassis.turn(-60)
     wheel_right.run_angle(speed=800, rotation_angle=215)
     wheel_right.run_angle(speed=800, rotation_angle=-100) # Turn the right wheel to push the drone
-    chassis.turn(50)
-    chassis.straight(-790)
-    chassis.turn(-45)
-    arm_left.run_time(speed=700, time=1000,wait=False) # Reset the drone arm
-    chassis.straight(350)
+    turn_to(90)
+    chassis.straight(-780)
+    turn_to(45)
+    arm_left.run_time(speed=700, time=1000,wait=False) # Reset the drone arm    
+    arm_right.run_time(speed=-700, time=1000,wait=False)
+    chassis.straight(550)
     chassis.straight(-15)
-    arm_left.run_angle(speed=700, rotation_angle=-200) # Reset the drone arm
-
+    arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # Reset the drone arm
+    arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False)
+    wait(1000)
+    chassis.settings(400)
+    chassis.straight(-500)
 
     # chassis.use_gyro(True) # Return the gyro for the rest of the run
     # arm_left.run_time(speed=825, time=3000, wait=False) # Push the drone in
