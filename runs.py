@@ -143,6 +143,12 @@ def white_run():
         chassis.straight(330, then=Stop.NONE)
         chassis.curve(radius=300, angle=90)
         chassis.straight(-650)
+
+
+def green_run():
+    chassis.settings(straight_speed=600)
+    chassis.straight(1000)
+    arm_right.run_angle(speed=700, rotation_angle=100)
     
 
 def run_none():
@@ -155,7 +161,7 @@ runs = [
     # (ORANGE, orange_run, 3, "orange run"),
     # (YELLOW, yellow_run, 4, "yellow run"),
     # (BLUE, blue_run, 56, "blue+vroom vroom contingency"),
-    # (GREEN, green_run, 7, "matcha run"),
+    (GREEN, green_run, 7, "matcha run"),
     (NO_COLOR, run_none, 0, "run straight"),
 ]  # for each run: attachment color, run function, run number (for display)
 
