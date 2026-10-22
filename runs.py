@@ -141,18 +141,38 @@ def white_run():
         chassis.curve(radius=100, angle=30, then=Stop.NONE)
 
         chassis.straight(330, then=Stop.NONE)
-        chassis.curve(radius=300, angle=90)
+        chassis.curve(radius=300, angle=-90)
         chassis.straight(-650)
 
 
 def green_run():
-    chassis.settings(straight_speed=600)
-    chassis.straight(1000)
-    arm_right.run_angle(speed=700, rotation_angle=100)
+    chassis.use_gyro(True) # use PID for the wall following
+    chassis.settings(straight_speed=300, straight_acceleration=100)
+    arm_left.run_time(speed=900, time=1000,wait=False)
+    chassis.straight(830)
+    arm_left.run_time(speed=-220, time=750,wait=False)
+
+    chassis.straight(100)
+    arm_left.run_time(speed=220, time=750)
+
+    chassis.settings(straight_speed=100)
+    chassis.straight(40,wait=False)
+    arm_right.run_angle(speed=700, rotation_angle=25)
+    chassis.straight(50)
+    arm_right.run_time(speed=340, time=750)
+    chassis.settings(straight_speed=500, straight_acceleration=170)
+    chassis.straight(-90)
+    chassis.curve(radius=-160, angle=90)
+    chassis.settings(straight_speed=600, straight_acceleration=600)
+    chassis.straight(555)
+
+
     
 
 def run_none():
-    hsv_check(arm_color_sensor)
+    #hsv_check(arm_color_sensor)
+    #chassis.straight(100000)
+    chassis.curve(radius=-170, angle=-90)
     # wheels_cleaning()
 
 runs = [
