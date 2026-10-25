@@ -166,21 +166,40 @@ def green_run():
     chassis.settings(straight_speed=600, straight_acceleration=600)
     chassis.straight(555)
 
+def blue_run():
+    arm_right.run_time(speed=900, time=1000, wait=False)
+    chassis.use_gyro(True) # use PID for the wall following
+    chassis.straight(450)
+    chassis.turn(-25)
+    chassis.straight(240)
+    chassis.turn(23)
+    chassis.straight(195)
+    arm_right.run_angle(speed=-1000, rotation_angle=100)
+    chassis.straight(1100, wait=False)
+    arm_left.run_angle(speed=-1000, rotation_angle=2000)
+    wheel_right.run_angle(speed=-400, rotation_angle=200)
+    wheel_left.run_angle(speed=400, rotation_angle=-50)
+    chassis.straight(-87)
+    chassis.turn(-47)
+    chassis.curve(radius=-547, angle=-35)
+    chassis.curve(radius=-270, angle=80)
 
-    
+    chassis.straight(-100)
 
 def run_none():
     #hsv_check(arm_color_sensor)
     #chassis.straight(100000)
-    chassis.curve(radius=-170, angle=-90)
-    # wheels_cleaning()
+    wheels_cleaning()
+    
+
+
 
 runs = [
     (BLACK, black_run, 1, "black run"),
     (WHITE, white_run, 2, "white run"),
     # (ORANGE, orange_run, 3, "orange run"),
     # (YELLOW, yellow_run, 4, "yellow run"),
-    # (BLUE, blue_run, 56, "blue+vroom vroom contingency"),
+    (BLUE, blue_run, 56, "blue+vroom vroom contingency"),
     (GREEN, green_run, 7, "matcha run"),
     (NO_COLOR, run_none, 0, "run straight"),
 ]  # for each run: attachment color, run function, run number (for display)
