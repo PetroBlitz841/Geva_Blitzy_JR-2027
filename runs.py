@@ -180,6 +180,7 @@ def blue_run():
     wheel_right.run_angle(speed=-400, rotation_angle=200)
     wheel_left.run_angle(speed=400, rotation_angle=-50)
     chassis.straight(-87)
+    #too far back maybe?
     chassis.turn(-47)
     chassis.curve(radius=-547, angle=-35)
     chassis.curve(radius=-270, angle=80)
