@@ -169,29 +169,42 @@ def green_run():
 def blue_run():
     arm_right.run_time(speed=900, time=1000, wait=False)
     chassis.use_gyro(True) # use PID for the wall following
+    #going to the first mission
     chassis.straight(450)
     chassis.turn(-25)
     chassis.straight(240)
     chassis.turn(23)
     chassis.straight(195)
-    arm_right.run_angle(speed=-1000, rotation_angle=100)
+    #doing fungus mission
+    chassis.straight(-7)
+    arm_right.run_time(speed=-1000, time=1000, wait=False)
     chassis.straight(1100, wait=False)
-    arm_left.run_angle(speed=-1000, rotation_angle=2000)
+    #doing the leaves mission
+    arm_left.run_angle(speed=-1000, rotation_angle=2750)
     wheel_right.run_angle(speed=-400, rotation_angle=200)
     wheel_left.run_angle(speed=400, rotation_angle=-50)
-    chassis.straight(-87)
-    #too far back maybe?
-    chassis.turn(-47)
-    chassis.curve(radius=-547, angle=-35)
+    #pushing down the box
+    chassis.settings(straight_speed=700, straight_acceleration=700)
+    chassis.straight(-110)
+    chassis.turn(-60)
+    chassis.curve(radius=-547, angle=-35,then=Stop.NONE)
     chassis.curve(radius=-270, angle=80)
 
-    chassis.straight(-100)
+    # chassis.straight(-100)
+
+
 
 def run_none():
     #hsv_check(arm_color_sensor)
     #chassis.straight(100000)
     wheels_cleaning()
     
+def yellow_run():
+    chassis.use_gyro(True) # use PID for the wall following
+    chassis.settings(straight_speed= 200, straight_acceleration=200)
+    chassis.straight(830)
+
+
 
 
 
@@ -199,7 +212,7 @@ runs = [
     (BLACK, black_run, 1, "black run"),
     (WHITE, white_run, 2, "white run"),
     # (ORANGE, orange_run, 3, "orange run"),
-    # (YELLOW, yellow_run, 4, "yellow run"),
+    (YELLOW, yellow_run, 4, "yellow run"),
     (BLUE, blue_run, 56, "blue+vroom vroom contingency"),
     (GREEN, green_run, 7, "matcha run"),
     (NO_COLOR, run_none, 0, "run straight"),
