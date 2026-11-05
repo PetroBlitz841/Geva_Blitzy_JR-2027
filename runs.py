@@ -201,8 +201,35 @@ def run_none():
     
 def yellow_run():
     chassis.use_gyro(True) # use PID for the wall following
+    hub.imu.reset_heading(0)
     chassis.settings(straight_speed= 200, straight_acceleration=200)
-    chassis.straight(830)
+    arm_left.run_time(speed=-900, time=1000,wait=False)
+    chassis.straight(620)
+    chassis.turn(32, absolute=True)
+    chassis.straight(-75)
+    arm_left.run_time(speed=900, time=1000)
+    chassis.settings(straight_speed= 400, straight_acceleration=400)
+    chassis.straight(100)
+    chassis.straight(-50)
+    chassis.turn(32, absolute=True)
+    chassis.straight(100)
+    #wheel_left.run_angle(speed=800, rotation_angle=250)
+    # wheel_right.run_angle(speed=800, rotation_angle=250)
+    #chassis.straight(30)
+    chassis.turn(30, absolute=True)
+    chassis.straight(-75)
+    chassis.turn(30, absolute=True)
+    arm_left.run_time(speed=-900, time=1000)
+    chassis.straight(100)
+    arm_left.run_time(speed=200, time=1000)
+    chassis.straight(100, wait=False)
+    arm_left.run_time(speed=-100, time=2000)
+    chassis.straight(200)
+
+
+
+
+
 
 
 
