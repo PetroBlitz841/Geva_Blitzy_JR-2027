@@ -99,8 +99,10 @@ def black_run():
     chassis.use_gyro(True) # use PID for the wall following
     chassis.straight(770) #pushing the drone
     chassis.turn(-60) #puttind the red thingy in the other thingy
-    wheel_right.run_angle(speed=800, rotation_angle=215)
-    wheel_right.run_angle(speed=800, rotation_angle=-100) 
+    wheel_right.run_angle(speed=800, rotation_angle=230)
+    wheel_right.run_angle(speed=800, rotation_angle=-30)
+    wheel_right.run_angle(speed=800, rotation_angle=30)
+    wheel_right.run_angle(speed=800, rotation_angle=-115 ) 
     turn_to(90) #turning back to the starter angle
     chassis.straight(-780) #going to base
     turn_to(45) #turning to the m02 
@@ -224,7 +226,12 @@ def yellow_run():
     arm_left.run_time(speed=200, time=1000)
     chassis.straight(100, wait=False)
     arm_left.run_time(speed=-100, time=2000)
-    chassis.straight(200)
+    chassis.straight(50, wait=False)
+    chassis.settings(straight_speed= 600, straight_acceleration=600)
+    chassis.straight(150)
+    #chassis.curve(radius=200, angle=45)
+    chassis.turn(56, absolute=True)
+    chassis.straight(700)
 
 
 
