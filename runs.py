@@ -97,11 +97,11 @@ def black_run():
     arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the  arm 3
     arm_right.run_time(speed=500, time=1000, wait=False)
     chassis.use_gyro(True) # use PID for the wall following
-    chassis.straight(770) #pushing the drone
+    chassis.straight(790) #pushing the drone
     chassis.turn(-60) #puttind the red thingy in the other thingy
     wheel_right.run_angle(speed=800, rotation_angle=230)
-    wheel_right.run_angle(speed=800, rotation_angle=-30)
-    wheel_right.run_angle(speed=800, rotation_angle=30)
+    wheel_right.run_angle(speed=1000, rotation_angle=-30)
+    wheel_right.run_angle(speed=1000, rotation_angle=30)
     wheel_right.run_angle(speed=800, rotation_angle=-115 ) 
     turn_to(90) #turning back to the starter angle
     chassis.straight(-780) #going to base
@@ -153,20 +153,21 @@ def green_run():
     arm_left.run_time(speed=900, time=1000,wait=False)
     chassis.straight(830)
     arm_left.run_time(speed=-220, time=750,wait=False)
-
+    # doint the leaves
     chassis.straight(100)
     arm_left.run_time(speed=220, time=750)
-
     chassis.settings(straight_speed=100)
     chassis.straight(40,wait=False)
+    #doint the coopp mission
     arm_right.run_angle(speed=700, rotation_angle=25)
     chassis.straight(50)
-    arm_right.run_time(speed=340, time=750)
+    arm_right.run_time(speed=600, time=1000)
     chassis.settings(straight_speed=500, straight_acceleration=170)
     chassis.straight(-90)
-    chassis.curve(radius=-160, angle=90)
+    #going home
+    #chassis.curve(radius=-160, angle=90)
     chassis.settings(straight_speed=600, straight_acceleration=600)
-    chassis.straight(555)
+    chassis.straight(-1000)
 
 def blue_run():
     arm_right.run_time(speed=900, time=1000, wait=False)
@@ -181,7 +182,7 @@ def blue_run():
     chassis.straight(-7)
     arm_right.run_time(speed=-1000, time=1000, wait=False)
     chassis.straight(1100, wait=False)
-    #doing the leaves mission
+    #doing the ant& leaves mission
     arm_left.run_angle(speed=-1000, rotation_angle=2750)
     wheel_right.run_angle(speed=-400, rotation_angle=200)
     wheel_left.run_angle(speed=400, rotation_angle=-50)
@@ -231,7 +232,7 @@ def yellow_run():
     chassis.straight(150)
     #chassis.curve(radius=200, angle=45)
     chassis.turn(56, absolute=True)
-    chassis.straight(700)
+    #chassis.straight(700)
 
 
 
