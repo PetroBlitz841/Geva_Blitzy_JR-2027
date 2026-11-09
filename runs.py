@@ -91,30 +91,37 @@ def turn_to(angle):
 
 
 def black_run():
+    #settings
     reset(gyro=90)
     arm_left.run_time(speed=-900, time=1000,wait=False) # Reset the  arm
     arm_right.run_time(speed=900, time=1000) # Reset the arm
     arm_left.run_time(speed=-500, time=1000, wait=False) # Reset the  arm 3
     arm_right.run_time(speed=500, time=1000, wait=False)
     chassis.use_gyro(True) # use PID for the wall following
-    chassis.straight(790) #pushing the drone
-    chassis.turn(-60) #puttind the red thingy in the other thingy
+    #pushing the drone
+    chassis.straight(790)
+    #puttind the red thingy in the other thingy
+    chassis.turn(-60) 
     wheel_right.run_angle(speed=800, rotation_angle=230)
     wheel_right.run_angle(speed=1000, rotation_angle=-30)
     wheel_right.run_angle(speed=1000, rotation_angle=30)
+    #going to the base
     wheel_right.run_angle(speed=800, rotation_angle=-115 ) 
-    turn_to(90) #turning back to the starter angle
-    chassis.straight(-780) #going to base
-    turn_to(45) #turning to the m02 
+    turn_to(90) 
+    chassis.straight(-780) 
+    turn_to(45) 
+    #going to mission 2
     arm_left.run_time(speed=700, time=1000,wait=False) # putting down the cage
     arm_right.run_time(speed=-700, time=1000,wait=False) #putting down the cage2
-    chassis.straight(550) #going to m02
+    chassis.straight(550) 
+    #doing the mission
     chassis.straight(-15) 
     arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # picking up the cage and seed
     arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False) #picking up the cage2 and seed
-    wait(1000) #literally wait
-    chassis.settings(400) #driving a bit slower
-    chassis.straight(-500) #going back to the base
+    #going home
+    wait(1000)
+    chassis.settings(400) 
+    chassis.straight(-500) 
     
 
 
@@ -148,7 +155,8 @@ def white_run():
 
 
 def green_run():
-    chassis.use_gyro(True) # use PID for the wall following
+    #settings & going to the first mission
+    chassis.use_gyro(True)
     chassis.settings(straight_speed=300, straight_acceleration=100)
     arm_left.run_time(speed=900, time=1000,wait=False)
     chassis.straight(830)
@@ -165,11 +173,11 @@ def green_run():
     chassis.settings(straight_speed=500, straight_acceleration=170)
     chassis.straight(-90)
     #going home
-    #chassis.curve(radius=-160, angle=90)
     chassis.settings(straight_speed=600, straight_acceleration=600)
     chassis.straight(-1000)
 
 def blue_run():
+    #settings
     arm_right.run_time(speed=900, time=1000, wait=False)
     chassis.use_gyro(True) # use PID for the wall following
     #going to the first mission
@@ -193,21 +201,15 @@ def blue_run():
     chassis.curve(radius=-547, angle=-35,then=Stop.NONE)
     chassis.curve(radius=-270, angle=80)
 
-    # chassis.straight(-100)
 
-
-
-def run_none():
-    #hsv_check(arm_color_sensor)
-    #chassis.straight(100000)
-    wheels_cleaning()
-    
 def yellow_run():
+    #settings
     chassis.use_gyro(True) # use PID for the wall following
     hub.imu.reset_heading(0)
     chassis.settings(straight_speed= 200, straight_acceleration=200)
     arm_left.run_time(speed=-900, time=1000,wait=False)
-    chassis.straight(620)
+    #driving
+    chassis.straight(610)
     chassis.turn(32, absolute=True)
     chassis.straight(-75)
     arm_left.run_time(speed=900, time=1000)
@@ -216,9 +218,6 @@ def yellow_run():
     chassis.straight(-50)
     chassis.turn(32, absolute=True)
     chassis.straight(100)
-    #wheel_left.run_angle(speed=800, rotation_angle=250)
-    # wheel_right.run_angle(speed=800, rotation_angle=250)
-    #chassis.straight(30)
     chassis.turn(30, absolute=True)
     chassis.straight(-75)
     chassis.turn(30, absolute=True)
@@ -229,12 +228,28 @@ def yellow_run():
     arm_left.run_time(speed=-100, time=2000)
     chassis.straight(50, wait=False)
     chassis.settings(straight_speed= 600, straight_acceleration=600)
-    chassis.straight(150)
+    chassis.straight(220)
+    chassis.turn(75, absolute=True)
+    chassis.straight(100)
+    arm_left.run_time(speed=700, time=2000)
+    chassis.straight(-120)
+    arm_left.run_time(speed=-100, time=1300)
     #chassis.curve(radius=200, angle=45)
-    chassis.turn(56, absolute=True)
-    #chassis.straight(700)
+    chassis.straight(150, then=Stop.NONE)
+    wheel_right.run_angle(speed=800, rotation_angle=150, then=Stop.NONE)
+    #chassis.turn(15 ,then=Stop.NONE)
+    chassis.straight(750)
 
 
+
+
+
+
+def run_none():
+    #hsv_check(arm_color_sensor)
+    #chassis.straight(100000)
+    wheels_cleaning()
+    
 
 
 
