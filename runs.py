@@ -241,6 +241,18 @@ def yellow_run():
     chassis.straight(750)
 
 
+def red_run():
+    chassis.use_gyro(True) # use PID for the wall following
+    chassis.settings(straight_speed= 100, straight_acceleration=100)
+    arm_left.run_time(speed=900, time=1000,wait=False)
+    arm_right.run_time(speed=-900, time=1000)
+    chassis.straight(350)
+    #chassis.straight(-45)
+    #chassis.straight(45)
+    arm_left.run_time(speed=-900, time=2000,wait=False)
+    arm_right.run_time(speed=900, time=2000)
+    chassis.straight(-300)
+
 
 
 
@@ -265,6 +277,7 @@ runs = [
     (YELLOW, yellow_run, 4, "yellow run"),
     (BLUE, blue_run, 56, "blue+vroom vroom contingency"),
     (GREEN, green_run, 7, "matcha run"),
+    (RED, red_run, 8, "red run"),
     (NO_COLOR, run_none, 0, "run straight"),
 ]  # for each run: attachment color, run function, run number (for display)
 
