@@ -243,15 +243,17 @@ def yellow_run():
 
 def red_run():
     chassis.use_gyro(True) # use PID for the wall following
-    chassis.settings(straight_speed= 100, straight_acceleration=100)
+    chassis.settings(straight_speed= 400, straight_acceleration=400)
+    #chassis.settings(straight_speed= 200, straight_acceleration=200)
+
     arm_left.run_time(speed=900, time=1000,wait=False)
     arm_right.run_time(speed=-900, time=1000)
-    chassis.straight(350)
-    #chassis.straight(-45)
-    #chassis.straight(45)
+    chassis.straight(400)
+    chassis.straight(-35)
     arm_left.run_time(speed=-900, time=2000,wait=False)
     arm_right.run_time(speed=900, time=2000)
-    chassis.straight(-300)
+    chassis.settings(straight_speed=800, straight_acceleration=800)
+    chassis.straight(-500)
 
 
 
