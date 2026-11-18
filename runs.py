@@ -222,35 +222,27 @@ def yellow_run():
     chassis.settings(straight_speed= 200, straight_acceleration=200)
     arm_left.run_time(speed=-900, time=1000,wait=False)
     #driving
-    chassis.straight(610)
-    chassis.turn(32, absolute=True)
-    chassis.straight(-75)
-    # arm_left.run_time(speed=900, time=1000)
-    # chassis.settings(straight_speed= 400, straight_acceleration=400)
-    # chassis.straight(100)
-    # chassis.straight(-50)
-    # chassis.turn(32, absolute=True)
-    # chassis.straight(100)
-    # chassis.turn(30, absolute=True)
-    # chassis.straight(-75)
-    # chassis.turn(30, absolute=True)
-    # arm_left.run_time(speed=-900, time=1000)
-    # chassis.straight(100)
-    # arm_left.run_time(speed=200, time=1000)
-    # chassis.straight(100, wait=False)
-    # arm_left.run_time(speed=-100, time=2000)
-    # chassis.straight(50, wait=False)
+    chassis.curve(radius=265, angle = 80)
+    chassis.straight(270)
+    chassis.straight(200)
+    
+    # chassis.straight(570)
+    chassis.turn(93, absolute=True)
+    # chassis.straight(70)
+    chassis.settings(straight_speed= 100, straight_acceleration=100)
+
+    arm_left.run_time(speed=250, time=1000, wait = False)
+    chassis.straight(170)
     # chassis.settings(straight_speed= 600, straight_acceleration=600)
     # chassis.straight(220)
-    # chassis.turn(75, absolute=True)
+    # chassis.turn(75, absolute=True, then=Stop.NONE)
     # chassis.straight(100)
     # arm_left.run_time(speed=700, time=2000)
     # chassis.straight(-120)
     # arm_left.run_time(speed=-100, time=1300)
-    # #chassis.curve(radius=200, angle=45)
     # chassis.straight(150, then=Stop.NONE)
-    # wheel_right.run_angle(speed=800, rotation_angle=150, then=Stop.NONE)
-    # #chassis.turn(15 ,then=Stop.NONE)
+    # wheel_right.run_angle(speed=800, rotation_angle=270, then=Stop.NONE)
+ 
     # chassis.straight(750)
     
 
@@ -315,4 +307,3 @@ while not finished:
             print("BAT_percent:", f"{check_battery_percent()}%")
             run_task(run[1]())  # Run the run funciton
             break
-
