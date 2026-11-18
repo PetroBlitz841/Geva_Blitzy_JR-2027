@@ -135,30 +135,35 @@ def black_run():
 def white_run():
     #resets
     reset()
+    hub.imu.reset_heading(0)
     chassis.use_gyro(True) # use PID for the wall following
     chassis.settings(straight_speed=400, straight_acceleration=400)
-    arm_right.run_time(speed=-1000, time=1000)
+    arm_right.run_time(speed=-1000, time=1000, wait=False) # Reset the  arm
     #going to mo9&mo8
     chassis.curve(radius=230, angle=-45,)
-    chassis.straight(355)
+    chassis.straight(340)
     chassis.curve(radius=230, angle=-45, )
-    chassis.turn(-90, absolute=True)
-    drive_untill_black(speed=200, turn_rate=0)
+    #drive_untill_black(speed=200, turn_rate=0)
+    print("done")
     chassis.settings(straight_speed=300, straight_acceleration=200)
 
     #doing the tree
-    chassis.straight(80)
-    chassis.straight(-50)
-    #doing the plonter
-    arm_right.run_time(speed=1000, time=2000, wait=False)
+    chassis.turn(-87, absolute=True)
+    chassis.straight(210)
+    #doing the tangeled
 
-    # chassis.straight(-150)
-    chassis.straight(-40)
-    chassis.curve(radius=250, angle=-90)
-    arm_right.run_time(speed=1000, time=3500)
-    chassis.straight(-145)
-    # chassis.straight(250)
-    chassis.curve(radius=250, angle=-90)
+    arm_right.run_time(speed=1000, time=2000, wait=False)
+    chassis.straight(-80)
+
+    arm_right.run_time(speed=1000, time=2500, wait=False)
+    #going to push the box
+    chassis.settings(straight_speed=600, straight_acceleration=600)
+    chassis.curve(radius=-210, angle=90)
+    chassis.straight(-150)
+    #home
+    chassis.straight(250, then=Stop.NONE)
+    chassis.curve(radius=270, angle=-60, then=Stop.NONE)
+    chassis.straight(500)
 
 
 
@@ -220,33 +225,34 @@ def yellow_run():
     chassis.straight(610)
     chassis.turn(32, absolute=True)
     chassis.straight(-75)
-    arm_left.run_time(speed=900, time=1000)
-    chassis.settings(straight_speed= 400, straight_acceleration=400)
-    chassis.straight(100)
-    chassis.straight(-50)
-    chassis.turn(32, absolute=True)
-    chassis.straight(100)
-    chassis.turn(30, absolute=True)
-    chassis.straight(-75)
-    chassis.turn(30, absolute=True)
-    arm_left.run_time(speed=-900, time=1000)
-    chassis.straight(100)
-    arm_left.run_time(speed=200, time=1000)
-    chassis.straight(100, wait=False)
-    arm_left.run_time(speed=-100, time=2000)
-    chassis.straight(50, wait=False)
-    chassis.settings(straight_speed= 600, straight_acceleration=600)
-    chassis.straight(220)
-    chassis.turn(75, absolute=True)
-    chassis.straight(100)
-    arm_left.run_time(speed=700, time=2000)
-    chassis.straight(-120)
-    arm_left.run_time(speed=-100, time=1300)
-    #chassis.curve(radius=200, angle=45)
-    chassis.straight(150, then=Stop.NONE)
-    wheel_right.run_angle(speed=800, rotation_angle=150, then=Stop.NONE)
-    #chassis.turn(15 ,then=Stop.NONE)
-    chassis.straight(750)
+    # arm_left.run_time(speed=900, time=1000)
+    # chassis.settings(straight_speed= 400, straight_acceleration=400)
+    # chassis.straight(100)
+    # chassis.straight(-50)
+    # chassis.turn(32, absolute=True)
+    # chassis.straight(100)
+    # chassis.turn(30, absolute=True)
+    # chassis.straight(-75)
+    # chassis.turn(30, absolute=True)
+    # arm_left.run_time(speed=-900, time=1000)
+    # chassis.straight(100)
+    # arm_left.run_time(speed=200, time=1000)
+    # chassis.straight(100, wait=False)
+    # arm_left.run_time(speed=-100, time=2000)
+    # chassis.straight(50, wait=False)
+    # chassis.settings(straight_speed= 600, straight_acceleration=600)
+    # chassis.straight(220)
+    # chassis.turn(75, absolute=True)
+    # chassis.straight(100)
+    # arm_left.run_time(speed=700, time=2000)
+    # chassis.straight(-120)
+    # arm_left.run_time(speed=-100, time=1300)
+    # #chassis.curve(radius=200, angle=45)
+    # chassis.straight(150, then=Stop.NONE)
+    # wheel_right.run_angle(speed=800, rotation_angle=150, then=Stop.NONE)
+    # #chassis.turn(15 ,then=Stop.NONE)
+    # chassis.straight(750)
+    
 
 
 def red_run():
@@ -275,7 +281,9 @@ def run_none():
     #hsv_check(arm_color_sensor)
     #chassis.straight(100000)
     #wheels_cleaning()
-    chassis.curve(radius=-250, angle=90)
+    chassis.curve(radius=270, angle=-60, then=Stop.NONE)
+    chassis.straight(500)
+
 
     
 
