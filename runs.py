@@ -220,12 +220,12 @@ def yellow_run():
     chassis.use_gyro(True) # use PID for the wall following
     hub.imu.reset_heading(0)
     chassis.settings(straight_speed= 200, straight_acceleration=200)
-    arm_left.run_time(speed=-900, time=1000,wait=False)
+    # armleft.run_time(speed=-900, time=1000,wait=False)
     #driving
-    chassis.curve(radius=265, angle = 80)
-    chassis.straight(270)
-    chassis.straight(200)
-    
+    chassis.curve(radius=255, angle = 80)
+    chassis.straight(370)
+    arm_left.run_time(speed=-900, time=1000,wait=False)
+    chassis.straight(120)
     # chassis.straight(570)
     chassis.turn(93, absolute=True)
     # chassis.straight(70)
@@ -233,6 +233,14 @@ def yellow_run():
 
     arm_left.run_time(speed=250, time=1000, wait = False)
     chassis.straight(170)
+    arm_left.run_time(speed=-250, time=1000, wait = False)
+    chassis.straight(125)
+    chassis.turn(45)
+    arm_left.run_time(speed=250, time=1000)
+    chassis.settings(straight_speed= 500, straight_acceleration= 500 )
+    chassis.turn(-15)
+    chassis.straight(600)
+    
     # chassis.settings(straight_speed= 600, straight_acceleration=600)
     # chassis.straight(220)
     # chassis.turn(75, absolute=True, then=Stop.NONE)
