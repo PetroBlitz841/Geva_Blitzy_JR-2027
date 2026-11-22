@@ -105,7 +105,8 @@ def black_run():
     arm_right.run_time(speed=500, time=1000, wait=False)
     chassis.use_gyro(True) # use PID for the wall following
     #pushing the drone
-    chassis.straight(780)
+    chassis.straight(810)
+    chassis.straight(-20, then=Stop.NONE)
     #puttind the red thingy in the other thingy
     chassis.turn(-60) 
     wheel_right.run_angle(speed=800, rotation_angle=230)
@@ -114,7 +115,7 @@ def black_run():
     #going to the base
     wheel_right.run_angle(speed=800, rotation_angle=-115 ) 
     turn_to(90) 
-    chassis.straight(-780) 
+    chassis.straight(-820) 
     turn_to(45) 
     #going to mission 2
     arm_left.run_time(speed=700, time=1000,wait=False) # putting down the cage
@@ -125,7 +126,7 @@ def black_run():
     arm_left.run_angle(speed=-1000, rotation_angle=1400, wait=False) # picking up the cage and seed
     arm_right.run_angle(speed=1000, rotation_angle=1400, wait=False) #picking up the cage2 and seed
     #going home
-    wait(1300)
+    wait(1700)
     chassis.settings(400) 
     chassis.straight(-500) 
     
@@ -205,6 +206,8 @@ def blue_run():
     chassis.straight(1100, wait=False)
     #doing the ant& leaves mission
     arm_left.run_angle(speed=-1000, rotation_angle=2750)
+    arm_left.run_angle(speed=50, rotation_angle=50)
+
     wheel_right.run_angle(speed=-400, rotation_angle=200)
     wheel_left.run_angle(speed=400, rotation_angle=-50)
     #pushing down the box
@@ -220,26 +223,62 @@ def yellow_run():
     chassis.use_gyro(True) # use PID for the wall following
     hub.imu.reset_heading(0)
     chassis.settings(straight_speed= 200, straight_acceleration=200)
-    # armleft.run_time(speed=-900, time=1000,wait=False)
-    #driving
-    chassis.curve(radius=255, angle = 80)
-    chassis.straight(370)
-    arm_left.run_time(speed=-900, time=1000,wait=False)
-    chassis.straight(120)
-    # chassis.straight(570)
+    arm_left.run_time(speed=900, time=500,wait=False)
+    #going to the goon mission
+    chassis.curve(radius=235, angle = 90, then=Stop.NONE)
+    chassis.straight(200)
+    chassis.curve(radius=235, angle = -35)
+    #at the gooning machine
+    chassis.settings(straight_speed= 200, straight_acceleration=150)
+    arm_left.run_time(speed=-900, time=1000, wait=False)
+    chassis.straight(110)
+    chassis.turn(90, absolute=True)
+    chassis.straight(20)
+    arm_left.run_time(speed=900, time=1500)
+
+    #going to get the nut
+    chassis.straight(19)
+
+    #nutting
     chassis.turn(93, absolute=True)
     # chassis.straight(70)
     chassis.settings(straight_speed= 100, straight_acceleration=100)
 
-    arm_left.run_time(speed=250, time=1000, wait = False)
-    chassis.straight(170)
-    arm_left.run_time(speed=-250, time=1000, wait = False)
-    chassis.straight(125)
-    chassis.turn(45)
+    arm_left.run_time(speed=200, time=750, wait = False)
+    # chassis.straight(170)
+    chassis.straight(300)
+    arm_left.run_time(speed=-250, time=1200)
+    chassis.turn (45)
     arm_left.run_time(speed=250, time=1000)
-    chassis.settings(straight_speed= 500, straight_acceleration= 500 )
-    chassis.turn(-15)
-    chassis.straight(600)
+    chassis.turn (-15)
+
+    chassis.settings(straight_speed=500, straight_acceleration= 500 )
+    chassis.straight(800)
+
+    # #settings
+    # chassis.use_gyro(True) # use PID for the wall following
+    # hub.imu.reset_heading(0)
+    # chassis.settings(straight_speed= 200, straight_acceleration=200)
+    # # armleft.run_time(speed=-900, time=1000,wait=False)
+    # #driving
+    # chassis.curve(radius=255, angle = 80)
+    # chassis.straight(370)
+    # arm_left.run_time(speed=-900, time=1000,wait=False)
+    # chassis.straight(120)
+    # # chassis.straight(570)
+    # chassis.turn(93, absolute=True)
+    # # chassis.straight(70)
+    # chassis.settings(straight_speed= 100, straight_acceleration=100)
+
+    # arm_left.run_time(speed=250, time=1000, wait = False)
+    # chassis.straight(170)
+    # arm_left.run_time(speed=-250, time=1000, wait = False)
+    # chassis.straight(125)
+    # chassis.turn(45)
+    # arm_left.run_time(speed=250, time=1000)
+    # chassis.settings(straight_speed= 500, straight_acceleration= 500 )
+    # chassis.turn(-15)
+    # chassis.straight(600)
     
     # chassis.settings(straight_speed= 600, straight_acceleration=600)
     # chassis.straight(220)
