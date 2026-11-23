@@ -225,11 +225,12 @@ def yellow_run():
     chassis.settings(straight_speed= 200, straight_acceleration=200)
     arm_left.run_time(speed=900, time=500,wait=False)
     #going to the goon mission
-    chassis.curve(radius=235, angle = 90, then=Stop.NONE)
-    chassis.straight(200)
-    chassis.curve(radius=235, angle = -35)
+    chassis.straight(600)
+    chassis.curve(radius=260, angle =-35)
+    drive_untill_black(100,0)
+    chassis.curve(radius=260, angle =-35)
+    chassis.straight(40)
     #at the gooning machine
-    chassis.settings(straight_speed= 200, straight_acceleration=150)
     arm_left.run_time(speed=-900, time=1000, wait=False)
     chassis.straight(110)
     chassis.turn(90, absolute=True)
@@ -249,6 +250,7 @@ def yellow_run():
     chassis.straight(300)
     arm_left.run_time(speed=-250, time=1200)
     chassis.turn (45)
+    chassis.straight(-25)
     arm_left.run_time(speed=250, time=1000)
     chassis.turn (-15)
 
