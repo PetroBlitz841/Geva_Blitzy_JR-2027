@@ -262,7 +262,7 @@ def yellow_run():
     chassis.straight(90)
     chassis.curve(radius=110, angle =35)
     arm_left.run_time(speed=300, time=750)
-    wheel_right.run_angle(speed=1000, rotation_angle=40, then=Stop.NONE)
+    wheel_right.run_angle(speed=400, rotation_angle=40, then=Stop.NONE)
     chassis.settings(straight_speed=1000, straight_acceleration=700)
     chassis.straight(600)
 
