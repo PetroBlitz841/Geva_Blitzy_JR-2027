@@ -70,11 +70,12 @@ def wheels_cleaning():
         hub.display.number(check_battery_percent())
         wait(500)
 
-def drive_untill_black(speed=100, turn_rate=0):
+def drive_untill_white(speed, turn_rate):
     chassis.drive(speed, turn_rate)
-    while floor_color_sensor.reflection() > 10:
+    while floor_color_sensor.reflection() < 82:
         print(floor_color_sensor.reflection())
     chassis.stop()
+
 
 def drive_untill_black(speed, turn_rate):
     chassis.drive(speed, turn_rate)
@@ -222,80 +223,59 @@ def yellow_run():
     #settings
     chassis.use_gyro(True) # use PID for the wall following
     hub.imu.reset_heading(0)
-    chassis.settings(straight_speed= 200, straight_acceleration=200)
+    chassis.settings(straight_speed= 320, straight_acceleration=300)
     arm_left.run_time(speed=900, time=500,wait=False)
     #going to the goon mission
-    chassis.straight(600)
-    chassis.curve(radius=260, angle =-35)
-    drive_untill_black(100,0)
-    chassis.curve(radius=260, angle =-35)
-    chassis.straight(40)
-    #at the gooning machine
+    chassis.straight(570,then=Stop.NONE)
+    chassis.curve(radius=260, angle =-35,then=Stop.NONE)
+    drive_untill_white(100,0)
+    #chassis.curve(radius=260, angle =-35)
+    # chassis.straight(40)
+    #at the goon mission
     arm_left.run_time(speed=-900, time=1000, wait=False)
-    chassis.straight(110)
-    chassis.turn(90, absolute=True)
-    chassis.straight(20)
-    arm_left.run_time(speed=900, time=1500)
+    chassis.straight(35,then=Stop.NONE)
+    chassis.turn(0, absolute=True)
 
+    arm_left.run_time(speed=900, time=1500)
+    #DO NOT ERASE NEXT 2 ROWS!!!!!!!!!
+    # chassis.straight(20)
+    # arm_right.run_time(speed=100, time=10)
+   
+    #at the gooning machine
+    # chassis.turn(90, absolute=True)
+    # chassis.straight(20)
+    # arm_left.run_time(speed=900, time=1500)
+
+
+    #GOING TO GET THE NUT PART 2
+   
     #going to get the nut
-    chassis.straight(19)
+    # chassis.straight(19)
 
     #nutting
-    chassis.turn(93, absolute=True)
-    # chassis.straight(70)
-    chassis.settings(straight_speed= 100, straight_acceleration=100)
-
-    arm_left.run_time(speed=200, time=750, wait = False)
-    # chassis.straight(170)
-    chassis.straight(300)
-    arm_left.run_time(speed=-250, time=1200)
-    chassis.turn (45)
-    chassis.straight(-25)
-    arm_left.run_time(speed=250, time=1000)
-    chassis.turn (-15)
-
-    chassis.settings(straight_speed=500, straight_acceleration= 500 )
-    chassis.straight(800)
-
-    # #settings
-    # chassis.use_gyro(True) # use PID for the wall following
-    # hub.imu.reset_heading(0)
-    # chassis.settings(straight_speed= 200, straight_acceleration=200)
-    # # armleft.run_time(speed=-900, time=1000,wait=False)
-    # #driving
-    # chassis.curve(radius=255, angle = 80)
-    # chassis.straight(370)
-    # arm_left.run_time(speed=-900, time=1000,wait=False)
-    # chassis.straight(120)
-    # # chassis.straight(570)
-    # chassis.turn(93, absolute=True)
-    # # chassis.straight(70)
+    #chassis.turn(93, absolute=True)
     # chassis.settings(straight_speed= 100, straight_acceleration=100)
 
-    # arm_left.run_time(speed=250, time=1000, wait = False)
-    # chassis.straight(170)
-    # arm_left.run_time(speed=-250, time=1000, wait = False)
-    # chassis.straight(125)
-    # chassis.turn(45)
+    arm_left.run_time(speed=200, time=750, wait = False)
+    chassis.straight(180, then=Stop.NONE)
+    arm_left.run_time(speed=-300, time=1000, wait= False)
+    chassis.straight(90)
+    chassis.curve(radius=110, angle =35)
+    arm_left.run_time(speed=300, time=750)
+    wheel_right.run_angle(speed=1000, rotation_angle=40, then=Stop.NONE)
+    chassis.settings(straight_speed=1000, straight_acceleration=700)
+    chassis.straight(600)
+
+    # arm_left.run_time(speed=-250, time=1200)
+    # chassis.turn (45)
+    # chassis.straight(-25)
     # arm_left.run_time(speed=250, time=1000)
-    # chassis.settings(straight_speed= 500, straight_acceleration= 500 )
-    # chassis.turn(-15)
-    # chassis.straight(600)
-    
-    # chassis.settings(straight_speed= 600, straight_acceleration=600)
-    # chassis.straight(220)
-    # chassis.turn(75, absolute=True, then=Stop.NONE)
-    # chassis.straight(100)
-    # arm_left.run_time(speed=700, time=2000)
-    # chassis.straight(-120)
-    # arm_left.run_time(speed=-100, time=1300)
-    # chassis.straight(150, then=Stop.NONE)
-    # wheel_right.run_angle(speed=800, rotation_angle=270, then=Stop.NONE)
- 
-    # chassis.straight(750)
-    
+    # chassis.turn (-15)
 
+    # chassis.settings(straight_speed=500, straight_acceleration= 500 )
+    # chassis.straight(800)
 
+    
 def red_run():
     chassis.use_gyro(True) # use PID for the wall following
     #chassis.settings(straight_speed= 500, straight_acceleration=500)
